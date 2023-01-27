@@ -1,0 +1,11 @@
+
+.container-class {
+
+  text-align: center;
+  background-color: rgba(250, 235, 215, 0.39);
+  & a {
+    display: block;
+    text-decoration: none;
+  }
+  padding: 10px;
+}

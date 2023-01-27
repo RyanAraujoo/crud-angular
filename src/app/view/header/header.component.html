@@ -12,21 +12,14 @@
         <a class="nav-link"
         [attr.aria-current]="currentClickNavbar === 'navbar-item-1' ? true : false "
         (click)="getClickNavbarForAriaCurrent('navbar-item-1')"
-         href="#">Cadastro</a>
+         routerLink="cadastrar">Cadastro</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"
-        href="#"
         [attr.aria-current]="currentClickNavbar === 'navbar-item-2' ? true : false "
         (click)="getClickNavbarForAriaCurrent('navbar-item-2')"
+        routerLink="consultar"
         >Consulta</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"
-        href="#"
-        [attr.aria-current]="currentClickNavbar === 'navbar-item-3' ? true : false "
-        (click)="getClickNavbarForAriaCurrent('navbar-item-3')"
-        >Sobre</a>
       </li>
     </ul>
   </div>
