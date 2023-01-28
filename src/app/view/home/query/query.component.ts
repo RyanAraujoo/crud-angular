@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-query',
   templateUrl: './query.component.html',
   styleUrls: ['./query.component.scss']
 })
-export class QueryComponent implements OnInit {
+export class QueryComponent {
 
-  constructor() { }
+  constructor(private route: Router) {}
 
-  ngOnInit(): void {
+  redirectNewVehicle () {
+    this.route.navigateByUrl('/cadastrar-veiculo');
   }
-
 }

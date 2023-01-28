@@ -1,1 +1,44 @@
-<p>query works!</p>
+<div class="container">
+  <div class="d-flex align-items-center justify-content-between flex-wrap">
+    <button type="button" class="btn btn-success" (click)="redirectNewVehicle()">+NOVO</button>
+    <div class="col-md-2">
+      <label for="inputZip" class="form-label">Busca por <strong>Placa</strong></label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+    <app-pagination></app-pagination>
+  </div>
+<div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Ações</th>
+        <th scope="col">#</th>
+        <th scope="col">Tipo de Caminhão</th>
+        <th scope="col">Placa</th>
+        <th scope="col">Ano</th>
+        <th scope="col">Tipo de Combustível</th>
+        <th scope="col">Km Aquisição</th>
+        <th scope="col">Renavam</th>
+        <th scope="col">Proprietário</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <button><img src="../../../../assets/open-edit-svg.svg" width="30"/></button>
+          <button><img src="../../../../assets/remove-svg.svg" width="30" /></button>
+        </td>
+        <th>1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Mark</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
