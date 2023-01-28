@@ -1,1 +1,121 @@
-<p>registration works!</p>
+<div class="container">
+  <form class="row g-3" [formGroup]="vehicleForm" (ngSubmit)="registrationDataCurrent()" >
+    <div class="col-md-2">
+      <label for="cod_vehicle" class="form-label">Id</label>
+      <input type="number" class="form-control" id="cod_vehicle"
+      maxlength="11"
+      formControlName="cod_vehicle">
+    </div>
+    <div class="col-md-6">
+      <label for="typeTruck" class="form-label">Tipo de Caminhão *</label>
+      <input type="text" class="form-control" id="typeTruck"
+      placeholder="Cavalo Mecânico Simples"
+      formControlName="typeTruck">
+    </div>
+    <div class="col-md-2">
+      <label for="registrationDate" class="form-label">Data do Registro</label>
+      <input type="date" class="form-control" id="registrationDate"
+      formControlName="registrationDate">
+    </div>
+    <div class="col-md-2">
+      <label for="plaque" class="form-label">Placa *</label>
+      <input type="text" class="form-control" id="plaque"
+      maxlength="7"
+      placeholder="ABC1B34"
+      formControlName="plaque">
+    </div>
+    <div class="col-md-2">
+      <label for="color" class="form-label">Cor</label>
+      <input type="text" class="form-control" id="color"
+      formControlName="color"
+      placeholder="Prata">
+    </div>
+    <div class="col-md-2">
+      <label for="year" class="form-label">Ano *</label>
+      <input type="number" class="form-control" id="year"
+      formControlName="year"
+      maxlength="4"
+      placeholder="2011">
+    </div>
+    <div class="col-md-3">
+      <label for="maximumWeight" class="form-label">Peso Máximo (t)</label>
+      <input type="number" class="form-control" id="maximumWeight"
+      formControlName="maximumWeight"
+      placeholder="38.000">
+    </div>
+    <div class="col-md-6">
+      <label for="typeFuel" class="form-label">Tipo de Combustível *</label>
+      <input type="text" class="form-control" id="typeFuel"
+      formControlName="typeFuel"
+      placeholder="Àlcool">
+    </div>
+    <div class="col-md-3">
+      <label for="acquisitionKm" class="form-label">Km Aquisição *</label>
+      <input type="number" class="form-control" id="acquisitionKm"
+      formControlName="acquisitionKm"
+      placeholder="845.000">
+    </div>
+    <div class="col-md-3">
+      <label for="chassis" class="form-label">Chassi *</label>
+      <input type="text" class="form-control" id="chassis"
+      formControlName="chassis"
+      maxlength="17"
+      placeholder="#tCxk022Ws0uBq1A3">
+    </div>
+    <div class="col-md-2">
+      <label for="motor" class="form-label">Motor *</label>
+      <input type="text" class="form-control" id="motor"
+      maxlength="17"
+      formControlName="motor"
+      placeholder="52WCV10338">
+    </div>
+    <div class="col-md-2">
+      <label for="reindeer" class="form-label">Renavam *</label>
+      <input type="number" class="form-control" id="reindeer"
+      formControlName="reindeer"
+      maxlength="11"
+      placeholder="159764823">
+    </div>
+    <div class="col-md-2">
+      <label for="owner" class="form-label">Proprietário *</label>
+      <input type="text" class="form-control" id="owner"
+      formControlName="owner"
+      placeholder="Kauê Couto SP">
+    </div>
+    <div class="col-md-6">
+      <label for="vehicleDocument" class="form-label">Documento do Veículo *</label>
+      <input type="file" class="form-control" id="vehicleDocument"
+      formControlName="vehicleDocument"
+      >
+    </div>
+    <div class="col-md-6">
+      <label for="vehiclePicture" class="form-label">Imagem do Veículo</label>
+      <input type="file" class="form-control" id="vehiclePicture"
+      formControlName="vehiclePicture"
+      >
+    </div>
+    <div class="col-md-3">
+      <label for="description" class="form-label">Descrição/Comentário</label>
+      <textarea class="form-control" id="description"
+      formControlName="description"
+      placeholder="Este caminhão..."
+      name="msg" rows="4" cols="50"></textarea>
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="rulesCheck"
+        formControlName="rulesCheck"
+        >
+        <label class="form-check-label" for="rulesCheck">
+          * Você está de acordo com as regras e politicas de frota?
+        </label>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary"
+      [disabled]="vehicleForm.invalid"
+      >Cadastrar Veículo</button>
+    </div>
+  </form>
+</div>
+
