@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { QueryComponent } from './query/query.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PaginationComponent } from 'src/app/shared/components/pagination/pagination.component';
 
 
 
@@ -10,10 +12,12 @@ import { HomeComponent } from './home.component';
   declarations: [
     QueryComponent,
     RegistrationComponent,
-    HomeComponent
+    HomeComponent,
+    PaginationComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
       QueryComponent,
