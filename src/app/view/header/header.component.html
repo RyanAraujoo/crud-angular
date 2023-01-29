@@ -10,16 +10,10 @@
     <ul class="nav">
       <li class="nav-item">
         <a class="nav-link"
-        [attr.aria-current]="currentClickNavbar === 'navbar-item-1' ? true : false "
-        (click)="getClickNavbarForAriaCurrent('navbar-item-1')"
-         routerLink="cadastrar">Cadastro</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"
         [attr.aria-current]="currentClickNavbar === 'navbar-item-2' ? true : false "
         (click)="getClickNavbarForAriaCurrent('navbar-item-2')"
-        routerLink="consultar"
-        >Consulta</a>
+        routerLink="consultar-veiculo"
+        >Veículo</a>
       </li>
     </ul>
   </div>
