@@ -7,9 +7,9 @@ import { MessageComponent } from './view/message/message.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: "full" },
-  { path: 'cadastrar', component: RegistrationComponent},
-  { path: 'consultar', component: QueryComponent },
-  { path: "editar:id", component: RegistrationComponent },
+  { path: 'cadastrar-veiculo', component: RegistrationComponent},
+  { path: 'consultar-veiculo', component: QueryComponent },
+  { path: "editar-veiculo/:id", component: RegistrationComponent },
   { path: "enviar-mensagem", component: MessageComponent },
   {
     path: '**',
