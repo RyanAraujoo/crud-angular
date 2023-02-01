@@ -1,0 +1,27 @@
+
+
+  <button type="button" [attr.class]="classBtn" [disabled]="disabledBtn ? 'disabled' : ''" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <ng-content></ng-content>
+  </button>
+
+<!-- Modal -->
+<div class="modal fade" [id]="messageCode === undefined ? '':'staticBackdrop'" data-bs-backdrop="static" ata-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+  <div class="modal-dialog" *ngIf="messageCode !== undefined; else modalLooping">
+    <div class="modal-content" [style]="'border: 4px solid' + colorBorderOfMessageCode + ';'">
+      <div class="modal-body">
+        {{messageCode}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="emitFunctionOutput.emit()">Ok</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #modalLooping>
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </ng-template>
+</div>
+
+
