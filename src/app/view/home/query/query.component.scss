@@ -1,5 +1,13 @@
 .container {
   height: 100vh;
+    
+    &_table {
+      overflow-x: scroll;
+    }
+    &_btns {
+      display: flex;
+      align-items: center;
+    }
 }
 
 button {

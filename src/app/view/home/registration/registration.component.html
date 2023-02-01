@@ -4,7 +4,7 @@
       <label for="cod_vehicle" class="form-label">Id</label>
       <input type="number" class="form-control" id="cod_vehicle"
       maxlength="11"
-      formControlName="cod_vehicle">
+      formControlName="id">
     </div>
     <div class="col-md-6">
       <label for="typeTruck" class="form-label">Tipo de Caminhão *</label>
@@ -14,7 +14,7 @@
     </div>
     <div class="col-md-2">
       <label for="registrationDate" class="form-label">Data do Registro</label>
-      <input type="date" class="form-control" id="registrationDate"
+      <input type="text" class="form-control" id="registrationDate"
       formControlName="registrationDate">
     </div>
     <div class="col-md-2">
@@ -53,6 +53,7 @@
       <label for="acquisitionKm" class="form-label">Km Aquisição *</label>
       <input type="number" class="form-control" id="acquisitionKm"
       formControlName="acquisitionKm"
+      appDecimalNumber
       placeholder="845.000">
     </div>
     <div class="col-md-3">
@@ -112,10 +113,13 @@
       </div>
     </div>
     <div class="col-12">
-      <button type="submit" class="btn btn-primary"
-      [disabled]="vehicleForm.invalid"
-      >Cadastrar Veículo</button>
+      <app-message-modal
+      classBtn="btn btn-primary"
+      [disabledBtn]="!vehicleForm.invalid"
+      (emitFunctionOutput)="backRouteOrigin()"
+      [messageCode]="dataMessage?.message"
+      [colorBorderOfMessageCode]="dataMessage?.code === 201 ? 'green' : 'red'"
+      >Salvar</app-message-modal>
     </div>
   </form>
 </div>
-
