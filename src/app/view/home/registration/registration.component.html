@@ -113,13 +113,24 @@
       </div>
     </div>
     <div class="col-12">
-      <app-message-modal
-      classBtn="btn btn-primary"
-      [disabledBtn]="!vehicleForm.invalid"
-      (emitFunctionOutput)="backRouteOrigin()"
-      [messageCode]="dataMessage?.message"
-      [colorBorderOfMessageCode]="dataMessage?.code === 201 ? 'green' : 'red'"
-      >Salvar</app-message-modal>
+      <ng-container *ngIf="this.inputDataInitial?.id === null; else editBtn">
+        <app-message-modal
+        classBtn="btn btn-primary"
+        [disabledBtn]="!vehicleForm.invalid"
+        (emitFunctionOutput)="backRouteOrigin()"
+        message="Você deseja salvar este dado?"
+        >Salvar</app-message-modal>
+      </ng-container>
+      <ng-template #editBtn>
+        <app-message-modal
+        classBtn="btn btn-warning"
+        [disabledBtn]="!vehicleForm.invalid"
+        (emitFunctionOutput)="backRouteOrigin()"
+        message="Você deseja realizar a edição deste item?"
+        optionalAlert="As alterações serão sobrescritas sobre o item selecionado!"
+        typeAlert="warning"
+        >Salvar</app-message-modal>
+      </ng-template>
     </div>
   </form>
 </div>

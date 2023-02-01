@@ -5,7 +5,7 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Vehicle } from './../model/Vehicle.model';
-import { VehicleMockService } from 'src/app/shared/services/vehicle/vehicle-mock.service';
+import { VehicleMockService } from 'src/app/shared/services/applications/vehicle/vehicle-mock.service';
 import { Injectable } from '@angular/core';
 
 

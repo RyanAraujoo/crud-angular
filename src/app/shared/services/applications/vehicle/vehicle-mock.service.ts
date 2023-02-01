@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { VehicleInterfaceService } from '../../interface/vehicle';
-import { MessageCode } from '../../model/message-code';
-import { Vehicle } from '../../model/Vehicle.model';
+import { VehicleInterfaceService } from '../../../interface/vehicle';
+import { MessageCode } from '../../../model/message-code';
+import { Vehicle } from '../../../model/Vehicle.model';
 
 @Injectable({
   providedIn: 'root',
@@ -216,7 +216,7 @@ export class VehicleMockService implements VehicleInterfaceService {
   })
   }
 
-  putDataVehicle(id: number, data: Vehicle): Observable<MessageCode> {
+  putDataVehicleById(id: number, data: Vehicle): Observable<MessageCode> {
     return of({
       code: 201,
       message: 'Veiculo Editado com Sucesso!'
@@ -228,5 +228,31 @@ export class VehicleMockService implements VehicleInterfaceService {
       code: 201,
       message: 'Veiculo Removido com Sucesso!'
     })
+  }
+
+  getDataVehicleByPlaque(caracter: string): Observable<Vehicle[]> {
+    return of(
+      [
+        {
+          id: 1,
+          typeTruck: 'cavalo mecanico simples',
+          registrationDate: '11-12-2022',
+          plaque: 'A6SDA69SD18',
+          color: 'blue',
+          year: 2021,
+          maximumWeight: 152.0,
+          typeFuel: 'alcool',
+          acquisitionKm: 159.0,
+          chassis: 'IASDJOASD9A5SD9AS',
+          motor: 'AS8D4A84F8G488D4A',
+          reindeer: 12345678912,
+          owner: 'kaue couto',
+          vehicleDocument: '',
+          vehiclePicture: '',
+          description: '',
+          rulesCheck: true,
+        }
+      ]
+    )
   }
 }

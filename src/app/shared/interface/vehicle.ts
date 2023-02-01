@@ -6,5 +6,6 @@ export interface VehicleInterfaceService {
   setDataVehicle(vehicleObjectData: Vehicle): Observable<MessageCode>
   getDataVehicle(): Observable<Vehicle[]>
   getDataVehicleById(id: number): Observable<Vehicle>
-  putDataVehicle(id: number, data: Vehicle): Observable<MessageCode>
+  putDataVehicleById(id: number, data: Vehicle): Observable<MessageCode>
+  getDataVehicleByPlaque(caracter: string): Observable<Vehicle[]>
 }

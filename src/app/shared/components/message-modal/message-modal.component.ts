@@ -8,9 +8,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class MessageModalComponent {
 
   @Input() returnMessageCodeFunction?: string
-  @Input() messageCode?: string
+  @Input() message?: string
   @Input() classBtn?: string
   @Input() disabledBtn?: boolean
   @Output() emitFunctionOutput = new EventEmitter<void>()
   @Input() colorBorderOfMessageCode: string = 'green'
+  @Input() optionalAlert?: string
+  @Input() typeAlert: string = 'danger'
 }

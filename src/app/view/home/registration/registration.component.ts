@@ -3,7 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router'
 import { first } from 'rxjs';
 import { MessageCode } from 'src/app/shared/model/message-code';
-import { VehicleMockService } from 'src/app/shared/services/vehicle/vehicle-mock.service';
+import { VehicleMockService } from 'src/app/shared/services/applications/vehicle/vehicle-mock.service';
+import { GlobalService } from 'src/app/shared/services/global.service';
 import { Vehicle } from './../../../shared/model/Vehicle.model';
 
 @Component({
@@ -13,10 +14,18 @@ import { Vehicle } from './../../../shared/model/Vehicle.model';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private vehicleService: VehicleMockService,private route: Router, private activateRoute: ActivatedRoute) {}
+  constructor(
+    private vehicleService: VehicleMockService,
+    private route: Router,
+    private activateRoute: ActivatedRoute,
+    private global: GlobalService)
+    {}
+
   inputDataInitial: Vehicle | null = null
   ngOnInit(): void {
-  this.inputDataInitial = this.activateRoute.snapshot.data['vehicle'] as Vehicle
+
+    this.inputDataInitial = this.activateRoute.snapshot.data['vehicle'] as Vehicle
+
   this.vehicleForm.setValue({
     id: this.inputDataInitial?.id,
     typeTruck: this.inputDataInitial?.typeTruck,
@@ -62,25 +71,55 @@ export class RegistrationComponent implements OnInit {
 
   registrationDataCurrent() {
     if(this.inputDataInitial?.id) {
-      this.vehicleService.putDataVehicle(this.inputDataInitial.id,this.vehicleForm.value)
-      .pipe(first())
-    .subscribe(
-      (data) => { this.dataMessage = data},
-      (error) => { this.dataMessage = error}
-    )
+      this.putDataVehicleMethod(this.inputDataInitial?.id)
       return;
     }
-    this.vehicleService.setDataVehicle(this.vehicleForm.value)
-    .pipe(first())
-    .subscribe(
-      (data) => { this.dataMessage = data},
-      (error) => { this.dataMessage = error}
-    )
+    this.setDataVehicleMethod()
   }
 
   backRouteOrigin()  {
     this.route.navigateByUrl("/consultar-veiculo")
     window.scrollTo(0, 0)
+  }
+
+  requiredAlert(typeMessage: MessageCode) {
+    this.global.showAlertInterfaceResult(`${typeMessage.message}`)
+  }
+
+  setDataVehicleMethod() {
+    this.vehicleService.setDataVehicle(this.vehicleForm.value)
+    .pipe(first())
+    .subscribe(
+      (sucess) => {
+        this.dataMessage = sucess
+        setTimeout(() => {
+          this.requiredAlert(sucess)
+        }, 1000)
+      },
+      (error) => {
+        this.dataMessage = error
+        setTimeout(() => {
+          this.requiredAlert(error)
+        }, 1000)
+      }
+    )
+  }
+
+  putDataVehicleMethod(id: number) {
+    this.vehicleService.putDataVehicleById(id,this.vehicleForm.value)
+    .pipe(first())
+    .subscribe(
+      (sucess) => {
+        this.dataMessage = sucess
+          this.requiredAlert(sucess)
+      },
+      (error) => {
+        this.dataMessage = error
+        setTimeout(() => {
+          this.requiredAlert(error)
+        }, 1000)
+      }
+    )
   }
 
 }
