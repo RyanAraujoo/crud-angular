@@ -5,6 +5,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HomeComponent } from './home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from 'src/app/shared/components/pagination/pagination.component';
+import { VehicleService } from 'src/app/shared/services/vehicle/vehicle.service';
+import { MessageModalComponent } from 'src/app/shared/components/message-modal/message-modal.component';
 
 
 
@@ -13,7 +15,8 @@ import { PaginationComponent } from 'src/app/shared/components/pagination/pagina
     QueryComponent,
     RegistrationComponent,
     HomeComponent,
-    PaginationComponent
+    PaginationComponent,
+    MessageModalComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +26,7 @@ import { PaginationComponent } from 'src/app/shared/components/pagination/pagina
       QueryComponent,
       RegistrationComponent,
       HomeComponent
-  ]
+  ],
+  providers: [VehicleService]
 })
 export class HomeModule { }
