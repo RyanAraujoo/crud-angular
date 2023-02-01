@@ -1,0 +1,8 @@
+<div class="col-md">
+  <label for="inputZip" class="form-label">Busca por <strong>Placa</strong></label>
+  <input type="text" class="form-control" id="inputZip"
+  #seachStr
+  (keyup)="seach(seachStr.value)"
+  (focus)="getCaracterForRequest()"
+  >
+</div>

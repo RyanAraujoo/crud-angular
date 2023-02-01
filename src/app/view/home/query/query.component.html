@@ -1,10 +1,9 @@
 <div class="container">
   <div class="d-flex align-items-center justify-content-between flex-wrap">
     <button type="button" class="btn btn-success" (click)="redirectNewVehicle()">+NOVO</button>
-    <div class="col-md-2">
-      <label for="inputZip" class="form-label">Busca por <strong>Placa</strong></label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
+    <app-getByItem
+      (vehicleOutput)="updateSearchVehicle($event)"
+    ></app-getByItem>
     <app-pagination></app-pagination>
   </div>
 <div class="container_table">
@@ -27,7 +26,8 @@
         <td class="container_btns">
           <button class="container_btn" (click)="redirectEditVehicle(vehicle.id)"><img src="../../../../assets/open-edit-svg.svg" width="30"/></button>
           <app-message-modal
-          [messageCode]="deleteMessageCode?.message"
+          message="Você deseja apagar este registro?"
+          optionalAlert="Este item será removido permanentemente."
           (emitFunctionOutput)="removeVehicle(vehicle.id)"
           >
           <img src="../../../../assets/remove-svg.svg" width="30"/>
