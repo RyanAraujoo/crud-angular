@@ -10,7 +10,7 @@ import { Vehicle } from './../../model/Vehicle.model';
 })
 export class GetByItemComponent implements OnInit {
   private stringSeach: Subject<string> = new Subject<string>()
-  vehicle?: Observable<Vehicle[]>
+  vehicle: Observable<Vehicle[]> = of([])
   valueOfSerach: string = ''
   @Output() vehicleOutput: EventEmitter<Observable<Vehicle[]>> = new EventEmitter<Observable<Vehicle[]>>()
 
@@ -21,7 +21,7 @@ export class GetByItemComponent implements OnInit {
   }
 
   getCaracterForRequest() {
-   this.vehicle = this.stringSeach.pipe(
+  this.vehicle = this.stringSeach.pipe(
       distinctUntilChanged(),
       switchMap((str: string) => {
         if (str.trim() === '') {
