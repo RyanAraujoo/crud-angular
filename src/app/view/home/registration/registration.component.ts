@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router'
-import { first } from 'rxjs';
+import { first, Observable, switchMap } from 'rxjs';
 import { MessageCode } from 'src/app/shared/model/message-code';
 import { VehicleMockService } from 'src/app/shared/services/applications/vehicle/vehicle-mock.service';
 import { GlobalService } from 'src/app/shared/services/global.service';
@@ -21,28 +21,27 @@ export class RegistrationComponent implements OnInit {
     private global: GlobalService)
     {}
 
-  inputDataInitial: Vehicle | null = null
+  inputDataInitial: Array<Vehicle> = []
   ngOnInit(): void {
+    this.inputDataInitial = this.activateRoute.snapshot.data['vehicle']
 
-    this.inputDataInitial = this.activateRoute.snapshot.data['vehicle'] as Vehicle
-
-  this.vehicleForm.setValue({
-    id: this.inputDataInitial?.id,
-    typeTruck: this.inputDataInitial?.typeTruck,
-    registrationDate: this.inputDataInitial?.registrationDate,
-    plaque: this.inputDataInitial?.plaque,
-    color: this.inputDataInitial?.color,
-    year: this.inputDataInitial?.year,
-    maximumWeight: this.inputDataInitial?.maximumWeight,
-    typeFuel: this.inputDataInitial?.typeFuel,
-    acquisitionKm: this.inputDataInitial.acquisitionKm,
-    chassis: this.inputDataInitial?.chassis,
-    motor: this.inputDataInitial?.motor,
-    reindeer: this.inputDataInitial?.reindeer,
-    owner: this.inputDataInitial?.owner,
-    vehicleDocument: this.inputDataInitial?.vehicleDocument,
-    vehiclePicture: this.inputDataInitial?.vehiclePicture,
-    description: this.inputDataInitial?.description,
+  this.vehicleForm.patchValue({
+    id: this.inputDataInitial[0]?.id === null ? '' : `${this.inputDataInitial[0]?.id}`,
+    typeTruck:this.inputDataInitial[0]?.typeTruck,
+    registrationDate: this.inputDataInitial[0]?.registrationDate ? `${this.inputDataInitial[0]?.registrationDate}`: `${new Date().toLocaleDateString('pt-BR')}` ,
+    plaque: this.inputDataInitial[0]?.plaque,
+    color: this.inputDataInitial[0]?.color,
+    year: this.inputDataInitial[0]?.year,
+    maximumWeight: this.inputDataInitial[0]?.maximumWeight,
+    typeFuel: this.inputDataInitial[0]?.typeFuel,
+    acquisitionKm: this.inputDataInitial[0]?.acquisitionKm,
+    chassis: this.inputDataInitial[0]?.chassis,
+    motor: this.inputDataInitial[0]?.motor,
+    reindeer: this.inputDataInitial[0]?.reindeer,
+    owner: this.inputDataInitial[0]?.owner,
+    vehicleDocument: null,
+    vehiclePicture: null,
+    description: null,
     rulesCheck: false
   })
   }
@@ -50,9 +49,9 @@ export class RegistrationComponent implements OnInit {
   dataMessage?: MessageCode
 
   vehicleForm: FormGroup = new FormGroup({
-    id: new FormControl({value: null, disabled: true}),
+    id: new FormControl({value: '', disabled: true}),
     typeTruck: new FormControl('',[Validators.required]),
-    registrationDate: new FormControl({value: '', disabled: true}),
+    registrationDate: new FormControl('',[Validators.required]),
     plaque: new FormControl('',[Validators.required]),
     color: new FormControl(''),
     year: new FormControl('',[Validators.required]),
@@ -70,14 +69,15 @@ export class RegistrationComponent implements OnInit {
   })
 
   registrationDataCurrent() {
-    if(this.inputDataInitial?.id) {
-      this.putDataVehicleMethod(this.inputDataInitial?.id)
+    if(this.inputDataInitial[0]?.id) {
+      this.putDataVehicleMethod(this.inputDataInitial[0].id)
       return;
     }
     this.setDataVehicleMethod()
   }
 
   backRouteOrigin()  {
+    this.registrationDataCurrent()
     this.route.navigateByUrl("/consultar-veiculo")
     window.scrollTo(0, 0)
   }

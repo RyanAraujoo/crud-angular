@@ -21,26 +21,26 @@ export class VehicleResolve implements Resolve<Vehicle> {
     state: RouterStateSnapshot
   ): Vehicle | Observable<Vehicle> | Promise<Vehicle> {
     if (route.params && route.params['id']) {
-      return this.vehicleMockService.getDataVehicleById(route.params['id'] as number);
+      return this.vehicleMockService.getDataVehicleById(route.params['id'])
     }
-    return of({
-      id: null,
-      typeTruck: '',
-      registrationDate: new Date().toLocaleDateString('pt-BR'),
-      plaque: '',
-      color: '',
-      year: 0,
-      maximumWeight: 0,
-      typeFuel: '',
-      acquisitionKm: 0,
-      chassis: '',
-      motor: '',
-      reindeer: 0,
-      owner: '',
-      vehicleDocument: '',
-      vehiclePicture: '',
-      description: '',
-      rulesCheck: true,
-    });
+      return of({
+        id: null,
+        typeTruck: '',
+        registrationDate: '',
+        plaque: '',
+        color: '',
+        year: null,
+        maximumWeight: null,
+        typeFuel: '',
+        acquisitionKm: null,
+        chassis: '',
+        motor: '',
+        reindeer: null,
+        owner: '',
+        vehicleDocument: '',
+        vehiclePicture: '',
+        description: '',
+        rulesCheck: false,
+      })
   }
 }

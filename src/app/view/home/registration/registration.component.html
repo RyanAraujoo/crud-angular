@@ -1,8 +1,8 @@
 <div class="container">
   <form class="row g-3" [formGroup]="vehicleForm" (ngSubmit)="registrationDataCurrent()" >
     <div class="col-md-2">
-      <label for="cod_vehicle" class="form-label">Id</label>
-      <input type="number" class="form-control" id="cod_vehicle"
+      <label for="id" class="form-label">Id</label>
+      <input type="number" class="form-control" id="id"
       maxlength="11"
       formControlName="id">
     </div>
@@ -14,7 +14,8 @@
     </div>
     <div class="col-md-2">
       <label for="registrationDate" class="form-label">Data do Registro</label>
-      <input type="text" class="form-control" id="registrationDate"
+      <input type="text" class="form-control"
+      id="registrationDate"
       formControlName="registrationDate">
     </div>
     <div class="col-md-2">
@@ -106,6 +107,7 @@
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="rulesCheck"
         formControlName="rulesCheck"
+        required
         >
         <label class="form-check-label" for="rulesCheck">
           * Você está de acordo com as regras e politicas de frota?
@@ -113,10 +115,10 @@
       </div>
     </div>
     <div class="col-12">
-      <ng-container *ngIf="this.inputDataInitial?.id === null; else editBtn">
+      <ng-container *ngIf="inputDataInitial[0]?.id == undefined ; else editBtn">
         <app-message-modal
         classBtn="btn btn-primary"
-        [disabledBtn]="!vehicleForm.invalid"
+        [disabledBtn]="vehicleForm.invalid"
         (emitFunctionOutput)="backRouteOrigin()"
         message="Você deseja salvar este dado?"
         >Salvar</app-message-modal>
@@ -124,7 +126,7 @@
       <ng-template #editBtn>
         <app-message-modal
         classBtn="btn btn-warning"
-        [disabledBtn]="!vehicleForm.invalid"
+        [disabledBtn]="!vehicleForm.valid"
         (emitFunctionOutput)="backRouteOrigin()"
         message="Você deseja realizar a edição deste item?"
         optionalAlert="As alterações serão sobrescritas sobre o item selecionado!"
