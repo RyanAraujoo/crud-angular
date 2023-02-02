@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { VehicleInterfaceService } from '../../../interface/vehicle';
@@ -8,251 +9,33 @@ import { Vehicle } from '../../../model/Vehicle.model';
   providedIn: 'root',
 })
 export class VehicleMockService implements VehicleInterfaceService {
-  vehicle: Vehicle[] = [
-    {
-      id: 1,
-      typeTruck: 'cavalo mecanico simples',
-      registrationDate: '11-12-2022',
-      plaque: 'A6SDA69SD18',
-      color: 'blue',
-      year: 2021,
-      maximumWeight: 152.0,
-      typeFuel: 'alcool',
-      acquisitionKm: 159.0,
-      chassis: 'IASDJOASD9A5SD9AS',
-      motor: 'AS8D4A84F8G488D4A',
-      reindeer: 12345678912,
-      owner: 'kaue couto',
-      vehicleDocument: '',
-      vehiclePicture: '',
-      description: '',
-      rulesCheck: true,
-    },
-    {
-      id: 2,
-      typeTruck: 'cavalo mecanico simples',
-      registrationDate: '11-12-2022',
-      plaque: 'A6SDA69SD18',
-      color: 'blue',
-      year: 2021,
-      maximumWeight: 152.0,
-      typeFuel: 'alcool',
-      acquisitionKm: 159.0,
-      chassis: 'IASDJOASD9A5SD9AS',
-      motor: 'AS8D4A84F8G488D4A',
-      reindeer: 12345678912,
-      owner: 'kaue couto',
-      vehicleDocument: '',
-      vehiclePicture: '',
-      description: '',
-      rulesCheck: true,
-    },
-    {
-      id: 3,
-      typeTruck: 'cavalo mecanico simples',
-      registrationDate: '11-12-2022',
-      plaque: 'A6SDA69SD18',
-      color: 'blue',
-      year: 2021,
-      maximumWeight: 152.0,
-      typeFuel: 'alcool',
-      acquisitionKm: 159.0,
-      chassis: 'IASDJOASD9A5SD9AS',
-      motor: 'AS8D4A84F8G488D4A',
-      reindeer: 12345678912,
-      owner: 'kaue couto',
-      vehicleDocument: '',
-      vehiclePicture: '',
-      description: '',
-      rulesCheck: true,
-    },
-    {
-      id: 4,
-      typeTruck: 'cavalo mecanico simples',
-      registrationDate: '11-12-2022',
-      plaque: 'A6SDA69SD18',
-      color: 'blue',
-      year: 2021,
-      maximumWeight: 152.0,
-      typeFuel: 'alcool',
-      acquisitionKm: 159.0,
-      chassis: 'IASDJOASD9A5SD9AS',
-      motor: 'AS8D4A84F8G488D4A',
-      reindeer: 12345678912,
-      owner: 'kaue couto',
-      vehicleDocument: '',
-      vehiclePicture: '',
-      description: '',
-      rulesCheck: true,
-    },
-    {
-      id: 5,
-      typeTruck: 'cavalo mecanico simples',
-      registrationDate: '11-12-2022',
-      plaque: 'A6SDA69SD18',
-      color: 'blue',
-      year: 2021,
-      maximumWeight: 152.0,
-      typeFuel: 'alcool',
-      acquisitionKm: 159.0,
-      chassis: 'IASDJOASD9A5SD9AS',
-      motor: 'AS8D4A84F8G488D4A',
-      reindeer: 12345678912,
-      owner: 'kaue couto',
-      vehicleDocument: '',
-      vehiclePicture: '',
-      description: '',
-      rulesCheck: true,
-    },
-    {
-      id: 6,
-      typeTruck: 'cavalo mecanico simples',
-      registrationDate: '11-12-2022',
-      plaque: 'A6SDA69SD18',
-      color: 'blue',
-      year: 2021,
-      maximumWeight: 152.0,
-      typeFuel: 'alcool',
-      acquisitionKm: 159.0,
-      chassis: 'IASDJOASD9A5SD9AS',
-      motor: 'AS8D4A84F8G488D4A',
-      reindeer: 12345678912,
-      owner: 'kaue couto',
-      vehicleDocument: '',
-      vehiclePicture: '',
-      description: '',
-      rulesCheck: true,
-    },
-    {
-      id: 7,
-      typeTruck: 'cavalo mecanico simples',
-      registrationDate: '11-12-2022',
-      plaque: 'A6SDA69SD18',
-      color: 'blue',
-      year: 2021,
-      maximumWeight: 152.0,
-      typeFuel: 'alcool',
-      acquisitionKm: 159.0,
-      chassis: 'IASDJOASD9A5SD9AS',
-      motor: 'AS8D4A84F8G488D4A',
-      reindeer: 12345678912,
-      owner: 'kaue couto',
-      vehicleDocument: '',
-      vehiclePicture: '',
-      description: '',
-      rulesCheck: true,
-    },
-    {
-      id: 8,
-      typeTruck: 'cavalo mecanico simples',
-      registrationDate: '11-12-2022',
-      plaque: 'A6SDA69SD18',
-      color: 'blue',
-      year: 2021,
-      maximumWeight: 152.0,
-      typeFuel: 'alcool',
-      acquisitionKm: 159.0,
-      chassis: 'IASDJOASD9A5SD9AS',
-      motor: 'AS8D4A84F8G488D4A',
-      reindeer: 12345678912,
-      owner: 'kaue couto',
-      vehicleDocument: '',
-      vehiclePicture: '',
-      description: '',
-      rulesCheck: true,
-    },
-    {
-      id: 9,
-      typeTruck: 'cavalo mecanico simples',
-      registrationDate: '11-12-2022',
-      plaque: 'A6SDA69SD18',
-      color: 'blue',
-      year: 2021,
-      maximumWeight: 152.0,
-      typeFuel: 'alcool',
-      acquisitionKm: 159.0,
-      chassis: 'IASDJOASD9A5SD9AS',
-      motor: 'AS8D4A84F8G488D4A',
-      reindeer: 12345678912,
-      owner: 'kaue couto',
-      vehicleDocument: '',
-      vehiclePicture: '',
-      description: '',
-      rulesCheck: true,
-    },
-  ];
+
+  constructor(private http: HttpClient) {}
+
+  URL: string = 'http://localhost:3000/vehicle'
+
+   headers = new HttpHeaders({
+    'Content-Type': 'application/json', });
 
   setDataVehicle(vehicleObjectData: Vehicle): Observable<MessageCode> {
-    this.vehicle.push(vehicleObjectData)
-    return of({
-      code: 201,
-      message: 'Veiculo criado com sucesso!',
-    });
+    console.log(vehicleObjectData);
+    let options = { headers: this.headers };
+   return this.http.post<MessageCode>(`${this.URL}`,vehicleObjectData,options)
   }
-
   getDataVehicle(): Observable<Vehicle[]> {
-    return of(this.vehicle)
+    return this.http.get<Vehicle[]>(`${this.URL}`)
   }
-
   getDataVehicleById(id: number): Observable<Vehicle> {
-   return of({
-    id: 1,
-    typeTruck: 'cavalo mecanico simples',
-    registrationDate: '11-12-2022',
-    plaque: 'A6SDA69SD18',
-    color: 'blue',
-    year: 2021,
-    maximumWeight: 152.0,
-    typeFuel: 'alcool',
-    acquisitionKm: 159.0,
-    chassis: 'IASDJOASD9A5SD9AS',
-    motor: 'AS8D4A84F8G488D4A',
-    reindeer: 12345678912,
-    owner: 'kaue couto',
-    vehicleDocument: '',
-    vehiclePicture: '',
-    description: '',
-    rulesCheck: true,
-  })
+    return this.http.get<Vehicle>(`${this.URL}/${id}`)
   }
-
   putDataVehicleById(id: number, data: Vehicle): Observable<MessageCode> {
-    return of({
-      code: 201,
-      message: 'Veiculo Editado com Sucesso!'
-    })
+    return this.http.put<MessageCode>(`${this.URL}/${id}`,data)
   }
-
-  deleteDataVehicle(id: number | null) {
-    return of({
-      code: 201,
-      message: 'Veiculo Removido com Sucesso!'
-    })
-  }
-
   getDataVehicleByPlaque(caracter: string): Observable<Vehicle[]> {
-    return of(
-      [
-        {
-          id: 1,
-          typeTruck: 'cavalo mecanico simples',
-          registrationDate: '11-12-2022',
-          plaque: 'A6SDA69SD18',
-          color: 'blue',
-          year: 2021,
-          maximumWeight: 152.0,
-          typeFuel: 'alcool',
-          acquisitionKm: 159.0,
-          chassis: 'IASDJOASD9A5SD9AS',
-          motor: 'AS8D4A84F8G488D4A',
-          reindeer: 12345678912,
-          owner: 'kaue couto',
-          vehicleDocument: '',
-          vehiclePicture: '',
-          description: '',
-          rulesCheck: true,
-        }
-      ]
-    )
+    return this.http.get<Vehicle[]>(`${this.URL}/searchBy/${caracter}`)
   }
+  deleteDataVehicleById(id: number): Observable<MessageCode> {
+    return this.http.delete<MessageCode>(`${this.URL}/${id}`)
+  }
+
 }
