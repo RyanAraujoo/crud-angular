@@ -1,0 +1,18 @@
+{ 
+      "typeTruck": "cavalo",
+      "registrationDate": "02/02/2023",
+      "plaque": "ATG587FDA1F",
+      "color": "",
+      "year": 2011,
+      "maximumWeight": 4812,
+      "typeFuel": "Alcool",
+      "acquisitionKm": 1500,
+     "chassis": "ASD125FGH852JKL67",
+      "motor": "ZXC741VFD258GTR96",
+      "reindeer": 12345672,
+      "owner": "Emerson Pereira",
+      "vehicleDocument": "c:/data/veiculosimples014.pdf",
+      "vehiclePicture": "",
+      "description": "",
+      "rulesCheck": 1
+}
