@@ -20,7 +20,7 @@ export class QueryComponent implements OnInit {
   deleteMessageCode?: MessageCode
 
   ngOnInit(): void {
-   this.dataVehicle$ = this.vehicleService
+    this.dataVehicle$ = this.vehicleService
     .getDataVehicle()
   }
 
@@ -37,7 +37,7 @@ export class QueryComponent implements OnInit {
   }
 
   removeVehicle(id: number | null) {
-    this.vehicleService.deleteDataVehicle(id)
+    this.vehicleService.deleteDataVehicleById(id as number)
     .pipe(first())
     .subscribe(
       (sucess: MessageCode) => {
@@ -57,5 +57,6 @@ export class QueryComponent implements OnInit {
 
   requiredAlert(typeMessage: MessageCode) {
     this.global.showAlertInterfaceResult(`${typeMessage.message}`)
+    window.location.reload();
   }
 }

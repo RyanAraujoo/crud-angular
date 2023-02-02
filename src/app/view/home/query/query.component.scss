@@ -1,12 +1,14 @@
 .container {
   height: 100vh;
-    
+
     &_table {
       overflow-x: scroll;
     }
     &_btns {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
     }
 }
 
