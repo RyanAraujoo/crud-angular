@@ -12,7 +12,7 @@ export class VehicleMockService implements VehicleInterfaceService {
 
   constructor(private http: HttpClient) {}
 
-  URL: string = 'http://localhost:3000/vehicle'
+  URL: string = 'https://vehicles.ryan-araujoara1.repl.co/vehicle'
 
    headers = new HttpHeaders({
     'Content-Type': 'application/json', });

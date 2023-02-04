@@ -57,6 +57,5 @@ export class QueryComponent implements OnInit {
 
   requiredAlert(typeMessage: MessageCode) {
     this.global.showAlertInterfaceResult(`${typeMessage.message}`)
-    window.location.reload();
   }
 }
