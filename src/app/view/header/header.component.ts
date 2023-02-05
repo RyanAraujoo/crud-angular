@@ -6,6 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  currentClickNavbar: string = ''
+  currentClickNavbar: string = 'navbar-brand'
   getClickNavbarForAriaCurrent(event: string) { this.currentClickNavbar = event }
 }

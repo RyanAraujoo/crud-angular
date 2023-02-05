@@ -2,7 +2,7 @@
   <div class="container">
     <a
     class="navbar-brand"
-    href="#"
+    routerLink="/"
     [attr.aria-current]="currentClickNavbar === 'navbar-brand' ? 'page' : false "
     (click)="getClickNavbarForAriaCurrent('navbar-brand')">
       <img src="../../assets/CONTROLE-DE-FROTA.webp" alt="Bootstrap" width="100" height="100">
@@ -10,9 +10,10 @@
     <ul class="nav">
       <li class="nav-item">
         <a class="nav-link"
+        id="vehicle-nav-link"
         [attr.aria-current]="currentClickNavbar === 'navbar-item-2' ? true : false "
         (click)="getClickNavbarForAriaCurrent('navbar-item-2')"
-        routerLink="consultar-veiculo"
+        routerLink="/consultar-veiculo"
         >Veículo</a>
       </li>
     </ul>
