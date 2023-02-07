@@ -18,7 +18,6 @@ export class VehicleMockService implements VehicleInterfaceService {
     'Content-Type': 'application/json', });
 
   setDataVehicle(vehicleObjectData: Vehicle): Observable<MessageCode> {
-    console.log(vehicleObjectData);
     let options = { headers: this.headers };
    return this.http.post<MessageCode>(`${this.URL}`,vehicleObjectData,options)
   }
