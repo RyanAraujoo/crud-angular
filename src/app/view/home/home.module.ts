@@ -9,7 +9,7 @@ import { MessageModalComponent } from 'src/app/shared/components/message-modal/m
 import { GlobalService } from 'src/app/shared/services/global.service';
 import { GetByItemComponent } from 'src/app/shared/components/getByItem/getByItem.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,6 @@ import {HttpClientModule} from '@angular/common/http';
       RegistrationComponent,
       HomeComponent
   ],
-  providers: [VehicleService, GlobalService]
+  providers: [VehicleService, GlobalService, DatePipe]
 })
 export class HomeModule { }

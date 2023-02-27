@@ -1,7 +1,7 @@
 export interface Vehicle {
       id: number | null,
       typeTruck: string,
-      registrationDate: string,
+      registrationDate: Date,
       plaque: string,
       color: string,
       year: number | null,

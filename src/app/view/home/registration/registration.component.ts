@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router'
@@ -18,18 +19,21 @@ export class RegistrationComponent implements OnInit {
     private vehicleService: VehicleMockService,
     private route: Router,
     private activateRoute: ActivatedRoute,
-    private global: GlobalService)
+    private global: GlobalService,
+    private datePipe: DatePipe
+    )
     {}
 
   inputDataInitial: Array<Vehicle> = []
 
   ngOnInit(): void {
+    const date = new Date()
     this.inputDataInitial = this.activateRoute.snapshot.data['vehicle']
 
   this.vehicleForm.patchValue({
     id: this.inputDataInitial[0]?.id === null ? '' : `${this.inputDataInitial[0]?.id}`,
     typeTruck:this.inputDataInitial[0]?.typeTruck,
-    registrationDate: this.inputDataInitial[0]?.registrationDate ? `${this.inputDataInitial[0]?.registrationDate}`: `${new Date().toLocaleDateString('pt-BR')}` ,
+    registrationDate: this.inputDataInitial[0]?.registrationDate ? this.datePipe.transform(this.inputDataInitial[0].registrationDate,"yyyy-MM-dd"): this.datePipe.transform(date,"yyyy-MM-dd") ,
     plaque: this.inputDataInitial[0]?.plaque,
     color: this.inputDataInitial[0]?.color,
     year: this.inputDataInitial[0]?.year,
@@ -88,6 +92,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   setDataVehicleMethod() {
+    console.log(this.vehicleForm.value)
     this.vehicleService.setDataVehicle(this.vehicleForm.value)
     .pipe(first())
     .subscribe(

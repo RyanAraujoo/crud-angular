@@ -26,7 +26,7 @@ export class VehicleResolve implements Resolve<Vehicle> {
       return of({
         id: null,
         typeTruck: '',
-        registrationDate: '',
+        registrationDate: new Date(),
         plaque: '',
         color: '',
         year: null,

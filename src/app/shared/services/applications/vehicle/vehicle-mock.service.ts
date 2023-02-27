@@ -36,5 +36,4 @@ export class VehicleMockService implements VehicleInterfaceService {
   deleteDataVehicleById(id: number): Observable<MessageCode> {
     return this.http.delete<MessageCode>(`${this.URL}/${id}`)
   }
-
 }
