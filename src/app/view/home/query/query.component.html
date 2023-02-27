@@ -1,49 +1,63 @@
 <div class="container">
   <div class="d-flex align-items-center justify-content-between flex-wrap">
-    <button type="button" class="btn btn-success" (click)="redirectNewVehicle()">+NOVO</button>
+    <button type="button" class="btn btn-success" (click)=" redirectFunctionVehicle(null)">+NOVO</button>
     <app-getByItem
       (vehicleOutput)="updateSearchVehicle($event)"
     ></app-getByItem>
    <!--  <app-pagination></app-pagination> -->
   </div>
-<div class="container_table">
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Ações</th>
-        <th scope="col">Id</th>
-        <th scope="col">Tipo de Caminhão</th>
-        <th scope="col">Placa</th>
-        <th scope="col">Ano</th>
-        <th scope="col">Tipo de Combustível</th>
-        <th scope="col">Km Aquisição</th>
-        <th scope="col">Renavam</th>
-        <th scope="col">Proprietário</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let vehicle of dataVehicle$ | async">
-        <td class="container_btns">
-          <button class="container_btns_btn" (click)="redirectEditVehicle(vehicle.id)"><img src="../../../../assets/open-edit-svg.svg" width="30"/></button>
-          <app-message-modal
-          message="Você deseja apagar este registro?"
-          optionalAlert="Este item será removido permanentemente."
-          (emitFunctionOutput)="removeVehicle(vehicle.id)"
-          >
-          <img src="../../../../assets/remove-svg.svg" width="30"/>
-        </app-message-modal>
-        </td>
-        <th>{{vehicle.id}}</th>
-        <td>{{vehicle.typeTruck}}</td>
-        <td>{{vehicle.plaque}}</td>
-        <td>{{vehicle.year}}</td>
-        <td>{{vehicle.typeFuel}}</td>
-        <td>{{vehicle.acquisitionKm}}</td>
-        <td>{{vehicle.reindeer}}</td>
-        <td>{{vehicle.owner}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container_table" *ngIf="(dataVehicle$ | async) as vehicle; else loading">
+  <ng-container *ngIf="vehicle[0]">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Ações</th>
+          <th scope="col">Id</th>
+          <th scope="col">Tipo de Caminhão</th>
+          <th scope="col">Placa</th>
+          <th scope="col">Ano</th>
+          <th scope="col">Tipo de Combustível</th>
+          <th scope="col">Km Aquisição</th>
+          <th scope="col">Renavam</th>
+          <th scope="col">Proprietário</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicle of dataVehicle$ | async">
+          <td class="container_btns">
+            <button class="container_btns_btnEdit" id="container-edit-vehicle-{{vehicle.id}}" (click)=" redirectFunctionVehicle(vehicle.id)"><img src="../../../../assets/open-edit-svg.svg" width="30"/></button>
+            <app-message-modal
+            classBtn="container-remove-vehicle-{{vehicle.id}}"
+            message="Você deseja apagar este registro?"
+            optionalAlert="Este item será removido permanentemente."
+            (emitFunctionOutput)="removeVehicle(vehicle.id)"
+            >
+            <img src="../../../../assets/remove-svg.svg" width="30"/>
+          </app-message-modal>
+          </td>
+          <th>{{vehicle.id}}</th>
+          <td>{{vehicle.typeTruck}}</td>
+          <td>{{vehicle.plaque}}</td>
+          <td>{{vehicle.year}}</td>
+          <td>{{vehicle.typeFuel}}</td>
+          <td>{{vehicle.acquisitionKm}}</td>
+          <td>{{vehicle.reindeer}}</td>
+          <td>{{vehicle.owner}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="vehicle.length === 0">
+    <div class="alert alert-dark" role="alert">
+      Nenhum Registro Encontrado!
+    </div>
+  </ng-container>
 </div>
-
+<ng-template #loading>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>
 </div>

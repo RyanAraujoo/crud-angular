@@ -13,4 +13,11 @@ describe('GlobalService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should render in message alert', () => {
+    let spy = spyOn(service, "showAlertInterfaceResult")
+    const message = "Veiculo Adicionado com Sucesso!"
+    service.showAlertInterfaceResult(message)
+    expect(spy).toHaveBeenCalledWith(message)
+  })
 });

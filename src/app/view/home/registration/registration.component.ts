@@ -22,6 +22,7 @@ export class RegistrationComponent implements OnInit {
     {}
 
   inputDataInitial: Array<Vehicle> = []
+
   ngOnInit(): void {
     this.inputDataInitial = this.activateRoute.snapshot.data['vehicle']
 
@@ -92,15 +93,13 @@ export class RegistrationComponent implements OnInit {
     .subscribe(
       (sucess) => {
         this.dataMessage = sucess
-        setTimeout(() => {
           this.requiredAlert(sucess)
-        }, 1000)
+          this.reload()
       },
       (error) => {
         this.dataMessage = error
-        setTimeout(() => {
           this.requiredAlert(error)
-        }, 1000)
+          this.reload()
       }
     )
   }
@@ -115,11 +114,11 @@ export class RegistrationComponent implements OnInit {
       },
       (error) => {
         this.dataMessage = error
-        setTimeout(() => {
           this.requiredAlert(error)
-        }, 1000)
       }
     )
   }
-
+  reload () {
+    this.global.reload('consultar-veiculo')
+  }
 }

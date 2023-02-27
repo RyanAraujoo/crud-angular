@@ -1,7 +1,10 @@
 .container {
   height: 100vh;
-
-    &_table {
+  &_table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+    & table {
       overflow-x: scroll;
     }
     &_btns {

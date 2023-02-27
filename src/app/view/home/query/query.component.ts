@@ -12,7 +12,7 @@ import { GlobalService } from 'src/app/shared/services/global.service';
   styleUrls: ['./query.component.scss']
 })
 export class QueryComponent implements OnInit {
-  dataVehicle$: Observable<Vehicle[]> = of([])
+  dataVehicle$?: Observable<Vehicle[]>
   constructor(
     private vehicleService: VehicleMockService,
     private route: Router,
@@ -27,13 +27,8 @@ export class QueryComponent implements OnInit {
   updateSearchVehicle(next: Observable<Vehicle[]>) {
     this.dataVehicle$ = next
   }
-
-  redirectNewVehicle () {
-    this.route.navigateByUrl('/cadastrar-veiculo');
-  }
-
-  redirectEditVehicle(id: number | null) {
-    this.route.navigateByUrl(`/editar-veiculo/${id}`);
+  redirectFunctionVehicle(id: number | null) {
+    id === null ?  this.route.navigateByUrl('/cadastrar-veiculo') : this.route.navigateByUrl(`/editar-veiculo/${id}`)
   }
 
   removeVehicle(id: number | null) {
@@ -42,20 +37,22 @@ export class QueryComponent implements OnInit {
     .subscribe(
       (sucess: MessageCode) => {
         this.deleteMessageCode = sucess
-        setTimeout(() => {
           this.requiredAlert(sucess)
-        }, 1000)
+          this.reload()
       },
       (error: MessageCode) => {
         this.deleteMessageCode = error
-        setTimeout(() => {
           this.requiredAlert(error)
-        }, 1000)
+          this.reload()
       }
     )
   }
 
   requiredAlert(typeMessage: MessageCode) {
     this.global.showAlertInterfaceResult(`${typeMessage.message}`)
+  }
+
+  reload () {
+    this.global.reload('consultar-veiculo')
   }
 }

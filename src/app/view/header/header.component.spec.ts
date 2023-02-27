@@ -19,8 +19,8 @@ describe('HeaderComponent', () => {
          [
           { path: '', component: HomeComponent, pathMatch: "full" },
           { path: "consultar-veiculo", component: QueryComponent }
-        ]
-      ) ]
+         ]
+      )]
     })
     .compileComponents();
 
